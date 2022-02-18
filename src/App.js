@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  useRoutes
+} from 'react-router-dom';
 
-function App() {
+// components
+import ArticleList from './component/article-list';
+import Article1 from './component/article01';
+import Article2 from './component/article02';
+import Article3 from './component/article03';
+
+const App = () => {
+  const routes = useRoutes([
+    { path: '/', element: <ArticleList /> },
+    { path: '/article1', element: <Article1 /> },
+    { path: '/article2', element: <Article2 /> },
+    { path: '/article3', element: <Article3 /> }
+  ]);
+
+  return routes;
+};
+
+const AppWrapper = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <App />
+    </Router>
   );
-}
+};
 
-export default App;
+export default AppWrapper;
